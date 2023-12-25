@@ -43,11 +43,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (getQueryParam('utm_campaign') !== null) utm_camp_param = getQueryParam('utm_campaign')
     if (getQueryParam('utm_term') !== null) utm_term_param = getQueryParam('utm_term')
     if (getQueryParam('utm_content') !== null) utm_cont_param = getQueryParam('utm_content')
-
-
   
 
-    // Логика установки прочих кук
+    // Логика установки прочих кук!
     if (!referer && !utmSourceParam && !document.cookie.includes('utm_source')) {
         setCookie('rk_name', 'direct', 365);
         setCookie('search', '(not set)', 365);
