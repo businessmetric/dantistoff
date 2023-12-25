@@ -36,7 +36,9 @@ function setSourceCookie() {
     // Собственный домен
     // перечисляем что такое собственные домены, чтобы вычислить прямые заходы
     var ownDomain = [
-        'click-app.ru'
+        'dantistoff.ru',
+        'xn----7sbaff2adcyjnre9bt8byk.xn--80adxhks',
+        'promo.dantistoff.ru'
     ];
 
     // Поисковые системы
