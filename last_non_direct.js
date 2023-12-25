@@ -21,10 +21,7 @@ function isThisDirect() {
         if(params.get('utmcsr') !== null &&
             (params.get('utmcsr') == 'direct' || params.get('utmcsr') == '')) return true;
 
-       // if(params.get('pid') !== null && params.get('pid') == '') return true;
-       // if(params.get('signup') !== null && params.get('signup') == '') return true;   
-        //if(params.get('gclid') !== null && params.get('gclid') == '') return true;   
-  
+ 
         if(params.get('utm_source') !== null && 
            (params.get('utm_source') == 'direct' || params.get('utm_source') == '')) return true;   
   
@@ -104,9 +101,6 @@ function setSourceCookie() {
     // прослушиваем query параметры , все после ?
     var query_params = document.location.search;
     // переменные для дальнейшего использования в поиске значений в query параметрах
-    //var gclid_param = "gclid";
-    //var prime_referrer_param = 'signup';
-    //var cpa_pid = 'pid';
     // переменные для записи куки
     var expirationTime = 31560000; // 12 months in seconds
     expirationTime = expirationTime * 1000; // Converts expirationtime to milliseconds
@@ -128,35 +122,6 @@ function setSourceCookie() {
       fullCookieValue = cookieName + "=" +cookieValue+"; path=/; domain=." + location.hostname.replace(/^www\./i, "") + expirationCookie; // Sets cookie for all subdomains      
     }
 
-    // не DIRECT
-    // Условия, если в URL обнаружили query параметр gclid то пишем следующие значения
-    /// else if URL contains gclid then cookie google cpc
-    /*else if (query_params.indexOf(gclid_param) !== -1) {
-      var cookieValue = "utmcsr=" + 'google' + "|" + "utmcmd=" + 'cpc' + "|" + "utmccn=" + '(not set)' + "|" + "utmcct=" + domain_name + "|" + "utmctr=gclid-" + {{gclid}} + "|" + "utmhostname=" + sub_domain_name; // Value of your cookie
-      fullCookieValue = cookieName + "=" +cookieValue+"; path=/; domain=." + location.hostname.replace(/^www\./i, "") + expirationCookie; // Sets cookie for all subdomains      
-      document.cookie = fullCookieValue;
-      return true;
-    }*/
- 
-    // не DIRECT
-    /// Условия, если в URL обнаружили query параметр prime_referrer_param то пишем следующие значения
-    /// else if URL referral parameter then prime_referral
-    /*else if (query_params.indexOf(prime_referrer_param) !== -1) {
-      var cookieValue = "utmcsr=" + 'prime_partners' + "|" + "utmcmd=" + 'referral' + "|" + "utmccn=" + '(not set)' + "|" + "utmcct=" + '(not set)' + "|" + "utmctr=ref-" + {{prime_ref_id}} + "|" + "utmhostname=" + sub_domain_name; // Value of your cookie
-      fullCookieValue = cookieName + "=" +cookieValue+"; path=/; domain=." + location.hostname.replace(/^www\./i, "") + expirationCookie; // Sets cookie for all subdomains      
-      document.cookie = fullCookieValue;
-      return true;
-    }*/
-
-    // не DIRECT
-    /// Условия, если в URL обнаружили query параметр cpa_pid то пишем следующие значения
-    /// else if URL contain query PID parameter
-   /* else if (query_params.indexOf(cpa_pid) !== -1) {
-      var cookieValue = "utmcsr=" + 'affise' + "|" + "utmcmd=" + 'cpa' + "|" + "utmccn=" + '(not set)' + "|" + "utmcct=" + '(not set)' + "|" + "utmctr=pid-" + {{pid}} + "|" + "utmhostname=" + sub_domain_name; // Value of your cookie
-      fullCookieValue = cookieName + "=" +cookieValue+"; path=/; domain=." + location.hostname.replace(/^www\./i, "") + expirationCookie; // Sets cookie for all subdomains      
-      document.cookie = fullCookieValue;
-      return true;
-    }*/
  
     // DIRECT
     // Условия, если домен первого уровня + зона соответствуют нашему домену domain_name то пишем следующие значения DIRECT
