@@ -76,21 +76,7 @@ function _extends() {
         referringInfo = null;
     } // if query_params contains signup // prime_partners / referral
 
-   /* if (qs.includes('signup')) {
-        gaReferral.utmcsr = 'prime_partners'; // source
-
-        gaReferral.utmcmd = 'referral'; // medium
-        // gaReferral.cct = sub_domain_name // content пока не понял
-        gaReferral.utmctr = 'ref-' + 'prime_ref_id'; // term
-    } // else if query params contains pid affise / cpa
-    else if (qs.includes('pid')) {
-        gaReferral.utmcsr = 'affise'; // source
-
-        gaReferral.utmcmd = 'cpa'; // medium
-        // gaReferral.cct = sub_domain_name // content пока не понял
-
-        gaReferral.utmctr = 'pid-' + 'pid'; // term
-    }*/ // if gaParams variable (query string from Google) contains utm values (at least source, gclid and dclid properties)
+   // if gaParams variable (query string from Google) contains utm values (at least source, gclid and dclid properties)
      if (gaParams && gaParams.utm_source ) {
         // map google long utm names to short (with values)
         for (var key in gaParams) {
@@ -99,10 +85,7 @@ function _extends() {
             gaReferral[keyName] = gaParams[key];
         } // if gclid or dclid then source = google and medium = cpc or cpm (depends on utmgclid)
 
-        /*if (gaParams.gclid || gaParams.dclid) {
-            gaReferral.utmcsr = 'google';
-            gaReferral.utmcmd = gaReferral.utmgclid ? 'cpc' : 'cpm';
-        }*/
+        
     } // else if document referrer contains utm values
     else if (referringInfo) {
         gaReferral.utmcsr = referringInfo.source;
@@ -181,25 +164,7 @@ function _extends() {
 
         return paramsObj;
     }
-    /**
-     * @param {String} referrer
-     * @returns {({source: string, medium: string, [term]: string} | {} | undefined)}
-     * @example If search engine find then return
-     *  {
-     *  medium: 'organic',
-     *  source: '<search engine name>',
-     *  terms: '<value from query string>'
-     * };
-     *
-     * @example if referring domain != this domain then return
-     * {
-     *  source: '<referrer param domain>',
-     *  medium: 'referral'
-     * }
-     * @example else return
-     * { }
-     *
-     */
+   
 
     function parseGaReferrer(referrer) {
         if (!referrer) return;
