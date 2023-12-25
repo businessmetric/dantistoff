@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 
             setCookie('rk_name', rkName, 365);
-            setCookie('search', '(not set)', 365);
+            setCookie('search', search, 365);
             setCookie('utm_source', 'yandex_map', 365);
             setCookie('utm_medium', utm_med_param, 365);
             setCookie('utm_campaign', utm_camp_param, 365);
