@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         const domainFromReferer = referer.match(/:\/\/(.[^/]+)/)[1];
         const rkName = 'SEO';
         let search = 'yandex';
-        if (referer.includes('google')) 'google';
+        if (referer.includes('google')) search = 'google';
 
         setCookie('rk_name', rkName, 365);
         setCookie('search', search, 365);
