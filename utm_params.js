@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   
 
     // Логика установки прочих кук
-    if (!referer && !utmSourceParam && !document.cookie.includes("utm_source")) {
+    if (!referer && !utmSourceParam && !document.cookie.includes('utm_source')) {
         setCookie('rk_name', 'direct', 365);
         setCookie('search', '(not set)', 365);
         setCookie('utm_source', '(not set)', 365);
