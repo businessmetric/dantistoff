@@ -19,9 +19,10 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     
     // Получаем значения из куки и referer
-      
+    let utmSourceParam
+    
     const searchCookie = parseCookieValue(document.cookie, 'search');
-    if (getQueryParam('utm_source') !== null) const  utmSourceParam = getQueryParam('utm_source');
+    if (getQueryParam('utm_source') !== null) utmSourceParam = getQueryParam('utm_source');
    
     
     const referer = document.referrer;
