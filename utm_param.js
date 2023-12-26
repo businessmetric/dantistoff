@@ -19,10 +19,10 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     
     // Получаем значения из куки и referer
-    let utmSourceParam
+
     
     const searchCookie = parseCookieValue(document.cookie, 'search');
-    if (getQueryParam('utm_source') !== null) utmSourceParam = getQueryParam('utm_source');
+    if (getQueryParam('utm_source') !== null) {var utmSourceParam = getQueryParam('utm_source');}
    
     
     const referer = document.referrer;
@@ -46,15 +46,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   
 
     // Логика установки прочих кук!
-    if (!referer && !utmSourceParam && !document.cookie.includes('utm_source')) {
-        setCookie('rk_name', 'direct', 365);
-        setCookie('search', '(not set)', 365);
-        setCookie('utm_source', '(not set)', 365);
-        setCookie('utm_medium', '(not set)', 365);
-        setCookie('utm_campaign', '(not set)', 365);
-        setCookie('utm_content', '(not set)', 365);
-        setCookie('utm_term', '(not set)', 365);
-    } else if (referer && (referer.includes('ya.ru') || referer.includes('yandex') || referer.includes('google')) && !utmSourceParam) {
+    if (referer && (referer.includes('ya.ru') || referer.includes('yandex') || referer.includes('google')) && !utmSourceParam) {
         const domainFromReferer = referer.match(/:\/\/(.[^/]+)/)[1];
         const rkName = 'SEO';
         let search = 'yandex';
@@ -134,14 +126,22 @@ document.addEventListener('DOMContentLoaded', async function() {
             setCookie('utm_content', utm_cont_param, 365);
             setCookie('utm_term', utm_term_param, 365);
         }
-    }
+    } else if (!referer && !utmSourceParam && !parseCookieValue(document.cookie, 'utm_source')) {
+        setCookie('rk_name', 'direct', 365);
+        setCookie('search', '(not set)', 365);
+        setCookie('utm_source', '(not set)', 365);
+        setCookie('utm_medium', '(not set)', 365);
+        setCookie('utm_campaign', '(not set)', 365);
+        setCookie('utm_content', '(not set)', 365);
+        setCookie('utm_term', '(not set)', 365);
+    } 
 
     const rkNameCookie = parseCookieValue(document.cookie, 'rk_name');
    
     // Логика установки куки first_rk_name
    
     let cookieExist = document.cookie.indexOf("first_rk_name")
-    if (cookieExist <= 0) {
+    if (cookieExist <= 0 ) {
         setCookie('first_rk_name', rkNameCookie, 365); // 1 год
     }
 });
