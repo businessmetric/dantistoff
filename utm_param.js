@@ -19,10 +19,9 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     
     // Получаем значения из куки и referer
-    let utmSourceParam
-    
+      
     const searchCookie = parseCookieValue(document.cookie, 'search');
-    if (getQueryParam('utm_source') !== null) utmSourceParam = getQueryParam('utm_source');
+    if (getQueryParam('utm_source') !== null) const  utmSourceParam = getQueryParam('utm_source');
    
     
     const referer = document.referrer;
@@ -46,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   
 
     // Логика установки прочих кук!
-    if (!referer && !utmSourceParam && !document.cookie.includes('utm_source')) {
+    if (!referer && !utmSourceParam ) {
         setCookie('rk_name', 'direct', 365);
         setCookie('search', '(not set)', 365);
         setCookie('utm_source', '(not set)', 365);
