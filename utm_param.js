@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', async function() {
+    function ownDomain(domain_from_referer) {
+        var ownDomain = [
+            'dantistoff.ru',
+            'xn----7sbaff2adcyjnre9bt8byk.xn--80adxhks',
+            'promo.dantistoff.ru'
+        ];
+        if (ownDomain.indexOf(domain_from_referer) > -1) {return true} else {return false}
+    }
     // Функция для парсинга значения параметра запроса
     function getQueryParam(name) {
         const urlSearchParams = new URLSearchParams(window.location.search);
@@ -19,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     
     // Получаем значения из куки и referer
-
+    
     
     const searchCookie = parseCookieValue(document.cookie, 'search');
     if (getQueryParam('utm_source') !== null) {var utmSourceParam = getQueryParam('utm_source');}
@@ -55,10 +63,11 @@ document.addEventListener('DOMContentLoaded', async function() {
         setCookie('rk_name', rkName, 365);
         setCookie('search', search, 365);
         setCookie('utm_source', search, 365);
-        setCookie('utm_medium', '(not set)', 365);
+        setCookie('utm_medium', 'organic', 365);
         setCookie('utm_campaign', '(not set)', 365);
         setCookie('utm_content', '(not set)', 365);
         setCookie('utm_term', '(not set)', 365);
+        
     } else if (referer && !referer.includes('ya.ru') && !referer.includes('yandex') && !referer.includes('google') && !utmSourceParam) {
         const domainFromReferer = referer.match(/:\/\/(.[^/]+)/)[1];
         const rkName = domainFromReferer + ' / referrer';
