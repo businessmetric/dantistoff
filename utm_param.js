@@ -1,11 +1,13 @@
+
 document.addEventListener('DOMContentLoaded', async function() {
     function ownDomainFunc(domain_from_referer) {
-        var ownDomain = [
+        var ownDomainArr = [
             'dantistoff.ru',
             'xn----7sbaff2adcyjnre9bt8byk.xn--80adxhks',
-            'promo.dantistoff.ru'
+            'promo.dantistoff.ru',
+            'files.click-app.ru'
         ];
-        if (ownDomain.indexOf(domain_from_referer) > -1) {return true} else {return false}
+        if (ownDomainArr.indexOf(domain_from_referer) > -1) {return true} else {return false}
     }
     // Функция для парсинга значения параметра запроса
     function getQueryParam(name) {
@@ -35,9 +37,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     
     const referer = document.referrer;
     if (referer) {
-        const domainFromReferer = referer.match(/:\/\/(.[^/]+)/)[1];
-        const ownDomain = ownDomainFunc(domainFromReferer)
-        console.log(ownDomain)
+        let domainFromReferer = referer.match(/:\/\/(.[^/]+)/)[1];
+        var ownDomain = ownDomainFunc(domainFromReferer)
+        console.log('ownDomain: ' + ownDomain)
     }
 
     // Устанавливаем куку domain
@@ -73,7 +75,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         setCookie('utm_content', '(not set)', 365);
         setCookie('utm_term', '(not set)', 365);
         
-    } else if (referer && ownDomain && ownDomain === false && !referer.includes('ya.ru') && !referer.includes('yandex') && !referer.includes('google') && !utmSourceParam) {
+    } else if (referer &&  ownDomain === false && !referer.includes('ya.ru') && !referer.includes('yandex') && !referer.includes('google') && !utmSourceParam) {
         const domainFromReferer = referer.match(/:\/\/(.[^/]+)/)[1];
         const rkName = domainFromReferer + ' / referrer';
         
@@ -140,7 +142,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             setCookie('utm_content', utm_cont_param, 365);
             setCookie('utm_term', utm_term_param, 365);
         }
-    } else if ((referer && ownDomain && ownDomain === true) || (!referer && !utmSourceParam && !parseCookieValue(document.cookie, 'utm_source'))) {
+    } else if ((referer && ownDomain === true) || (!referer && !utmSourceParam && !parseCookieValue(document.cookie, 'utm_source'))) {
         setCookie('rk_name', 'direct', 365);
         setCookie('search', '(not set)', 365);
         setCookie('utm_source', '(not set)', 365);
@@ -148,7 +150,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         setCookie('utm_campaign', '(not set)', 365);
         setCookie('utm_content', '(not set)', 365);
         setCookie('utm_term', '(not set)', 365);
-    }  else if 
+    } 
 
     const rkNameCookie = parseCookieValue(document.cookie, 'rk_name');
    
