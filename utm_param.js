@@ -1,5 +1,8 @@
 
 document.addEventListener('DOMContentLoaded', async function() {
+    const domain = window.location.hostname;
+    setCookie('domain', domain);
+
     function ownDomainFunc(domain_from_referer) {
         var ownDomainArr = [
             'dantistoff.ru',
@@ -24,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Функция для установки куки
     function setCookie(name, value, days) {
         const expires = days ? '; expires=' + new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString() : '';
-        document.cookie = name + '=' + value + expires + '; path=/';
+        document.cookie = name + '=' + value + expires + '; path=/; domain='+ domain;
     }
 
     
@@ -42,9 +45,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         console.log('ownDomain: ' + ownDomain)
     }
 
-    // Устанавливаем куку domain
-    const domain = window.location.hostname;
-    setCookie('domain', domain);
 
     //Устанавливаем значения utM по дефолту
     let utm_source_param = '(not set)'
@@ -111,6 +111,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             setCookie('utm_term', utm_term_param, 365);
         } else if (utmSourceParam === '2gis') {
             const rkName = '2gis';
+            console.log('2gis')
 
             setCookie('rk_name', rkName, 365);
             setCookie('search', '(not set)', 365);
@@ -122,7 +123,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         } else if (utmSourceParam === 'yandex_map') {
             const rkName = 'YandexMap';
             const search = 'yandex';
-
+            console.log('yaMap')
 
             setCookie('rk_name', rkName, 365);
             setCookie('search', search, 365);
