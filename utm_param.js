@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   
 
     // Логика установки прочих кук!
-    if (referer && (referer.includes('ya.ru') || referer.includes('yandex') || referer.includes('google')) && !utmSourceParam) {
+    if (referer && ownDomain === false && (referer.includes('ya.ru') || referer.includes('yandex') || referer.includes('google')) && !utmSourceParam) {
         const domainFromReferer = referer.match(/:\/\/(.[^/]+)/)[1];
         const rkName = 'SEO';
         let search = 'yandex';
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             setCookie('utm_content', utm_cont_param, 365);
             setCookie('utm_term', utm_term_param, 365);
         }
-    } else if ((referer && ownDomain === true) || (!referer && !utmSourceParam && !parseCookieValue(document.cookie, 'utm_source'))) {
+    } else if ((referer && ownDomain === false) || (!referer && !utmSourceParam && !parseCookieValue(document.cookie, 'utm_source'))) {
         setCookie('rk_name', 'direct', 365);
         setCookie('search', '(not set)', 365);
         setCookie('utm_source', '(not set)', 365);
