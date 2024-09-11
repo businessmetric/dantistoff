@@ -1,0 +1,26 @@
+<scriprt>
+
+document.addEventListener("marquizLoaded", function() {
+
+function getCookie() {
+  return document.cookie.split('; ').reduce((acc, item) => {
+    const [name, value] = item.split('=')
+    acc[name] = value
+    return acc
+  }, {})
+}
+const cookies = getCookie() 
+const parameters = ['rk_name','first_rk_name','search','utm_source','utm_medium',
+'utm_campaign', 'utm_content', 'utm_term', 'domain'];
+
+for (let i=0; i<parameters.length; i++) {
+  if ( cookies.hasOwnProperty(parameters[i])  ) {
+    console.log(Marquiz)
+    console.log(parameters[i], cookies[parameters[i]])
+Marquiz.addParam( parameters[i], cookies[parameters[i]]);
+  }
+}
+  
+});
+
+</script>
