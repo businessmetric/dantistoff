@@ -1,3 +1,6 @@
+
+<script>
+// куки скрипт
 function firstSource() {
 function _extends() {
     _extends = Object.assign
@@ -411,7 +414,10 @@ function setSourceCookie() {
     var ownDomain = [
         'dantistoff.ru',
         'xn----7sbaff2adcyjnre9bt8byk.xn--80adxhks',
-        'promo.dantistoff.ru'
+        'promo.dantistoff.ru',
+        'dental-prof-implantation.ru',
+        'df-clip.tilda.ws',
+        'dantistoff-quiz.ru'
     ];
 
     // Поисковые системы
@@ -584,7 +590,9 @@ function utmParams() {
             'dantistoff.ru',
             'xn----7sbaff2adcyjnre9bt8byk.xn--80adxhks',
             'promo.dantistoff.ru',
-            'files.click-app.ru'
+            'dental-prof-implantation.ru',
+            'df-clip.tilda.ws',
+            'dantistoff-quiz.ru'
         ];
         if (ownDomainArr.indexOf(domain_from_referer) > -1) {return true} else {return false}
     }
@@ -738,3 +746,5 @@ function utmParams() {
 firstSource()
 lastNonDirect()
 utmParams()
+;
+</script>
